@@ -2,14 +2,15 @@
 
 [简体中文](ARCHIVE.zh-CN.md) · [Home](../README.en.md)
 
-This public snapshot records the project as of **2026-10-19**. Upload the contents of this directory as the repository root. No GitHub account, remote URL or commit identity is embedded, and nothing has been pushed.
+This public snapshot records the project as of **2026-10-19**. Upload its contents as the repository root. This version targets `Allannn-sudo/OSX-for-SONY-VAIO` and uses the actual links; no local commit or push has been performed. `main` presents the whole project, with a model profile and manual workflow supporting `vgn-y18c`. See the [GitHub guide](GITHUB.en.md) for branch and settings operations.
 
 ## Included
 
 - Chinese and English home pages, the hardware photo, and matching progress/build notes.
 - R3-OFFLINE research source, Apple notices and the complete APSL 1.1 text.
 - An offline builder with explicit external toolchain paths, read-only loader-format preflight and host protocol simulation.
-- 41 portable tests that require no original or experimental driver binaries.
+- 41 loader tests and 17 branch-preparation tests that require no original or experimental driver binaries.
+- CI, manual model-branch creation, issue forms, a PR template and bilingual contributing guides.
 - A read-only input-state collector and status/historical-file-hash summaries without raw logs.
 
 `MANIFEST.sha256` records the other snapshot files for transfer and preservation checks. It is a content manifest, not a digital signature. Regenerate it after changing files.

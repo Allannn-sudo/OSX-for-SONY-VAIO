@@ -1,0 +1,37 @@
+{
+  "as_of": "2026-10-19",
+  "repository": "Allannn-sudo/OSX-for-SONY-VAIO",
+  "default_branch_verified": "main",
+  "public_repository_verified": true,
+  "discussions_setting_at_read_only_check": false,
+  "remote_writes_performed": false,
+  "manual_model_branch": {
+    "name": "vgn-y18c",
+    "workflow": "create-model-branch.yml",
+    "source_branch": "main",
+    "existing_ref_policy": "leave unchanged",
+    "ref_creation": "atomic Git Data API POST, no ref update"
+  },
+  "ci_workflow": "offline-checks.yml",
+  "actions_pins": {
+    "actions/checkout": {
+      "release": "v4.4.0",
+      "commit": "11d5960a326750d5838078e36cf38b85af677262"
+    },
+    "actions/setup-python": {
+      "release": "v5.6.0",
+      "commit": "a26af69be951a213d495a4c3e4e4022e16d87065"
+    }
+  },
+  "owner_reported_existing_achievement": "Pull Shark",
+  "new_profile_achievements_awarded_by_preparation": false,
+  "achievement_criteria": "GitHub has not published complete unlock rules; repository files and CI badges do not award profile achievements",
+  "primary_references": [
+    "https://docs.github.com/en/account-and-profile/reference/profile-reference",
+    "https://github.blog/news-insights/product-news/introducing-achievements-recognizing-the-many-stages-of-a-developers-coding-journey/",
+    "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow",
+    "https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow",
+    "https://docs.github.com/en/rest/git/refs#create-a-reference",
+    "https://nobi.com/en/Steve%20Jobs%20and%20Japan/entry-1212.html"
+  ]
+}

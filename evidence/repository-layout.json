@@ -1,0 +1,12 @@
+{
+  "repository": "Allannn-sudo/OSX-for-SONY-VAIO",
+  "project_branch": "main",
+  "model_branches": {
+    "vgn-y18c": {
+      "profile": "models/vgn-y18c/README.md",
+      "milestone": "Tiger 10.4.8 desktop reached; input reliability unresolved",
+      "creation": "manual workflow_dispatch; not created by ZIP upload alone"
+    }
+  },
+  "active_readme": "project"
+}

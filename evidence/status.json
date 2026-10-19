@@ -46,10 +46,19 @@
   "validation_suites": {
     "historical_local_binary_loader_tests": 33,
     "portable_synthetic_loader_tests": 41,
-    "host_protocol_cases": 11
+    "host_protocol_cases": 11,
+    "branch_preparation_tests": 17,
+    "current_portable_python_total": 58
   },
   "revised_read_only_collector": {
     "tiger_ioreg_options_corrected": true,
     "real_machine_report": "pending"
+  },
+  "project_repository": "https://github.com/Allannn-sudo/OSX-for-SONY-VAIO",
+  "repository_structure": {
+    "main": "overall project overview",
+    "model_profile": "models/vgn-y18c/README.md",
+    "model_branch": "vgn-y18c",
+    "remote_branch_created_by_this_package_preparation": false
   }
 }

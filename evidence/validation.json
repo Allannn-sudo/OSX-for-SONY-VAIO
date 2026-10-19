@@ -36,5 +36,17 @@
     "reencoded": false,
     "capture_metadata_removed": true
   },
-  "driver_installation_or_loading_performed": false
+  "driver_installation_or_loading_performed": false,
+  "branch_preparation_tests": {
+    "passed": 17,
+    "uses_synthetic_temporary_snapshots": true
+  },
+  "current_portable_python_tests_total": 58,
+  "branch_workflow_local_stub_cases": [
+    "already exists: unchanged",
+    "create: four-file tree and atomic ref creation",
+    "raced create: existing ref preserved",
+    "API rejection: failure reported"
+  ],
+  "github_actions_or_remote_branch_creation_run": "not performed during package preparation"
 }
