@@ -1,0 +1,42 @@
+name: VAIO 机型报告 / Hardware report
+description: 记录实际测试的 VAIO 配置和兼容性 / Share an observed VAIO configuration and results
+title: "[Model] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请区分已验证与未验证的功能，仅上传必要的脱敏信息。
+        Separate tested and untested features. Include only necessary, sanitized information.
+  - type: input
+    id: model
+    attributes:
+      label: 具体型号 / Exact model
+      placeholder: Sony VAIO VGN-…
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: 实际配置 / Actual hardware
+      description: CPU、内存、芯片组、显卡、存储接口和已核实的 PCI ID；无需序列号。
+    validations:
+      required: true
+  - type: textarea
+    id: system
+    attributes:
+      label: 系统与引导 / System and boot
+      description: OS X 版本、内核、BIOS/UEFI、引导方式及是否保留其他系统。
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: 结果与证据 / Results and evidence
+      description: 分别说明显示、输入、网络、声音、睡眠及重启的实测结果和未验证项。
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: 来源或照片 / Sources or photos
+      description: 可选，提供资料链接或机型实机照片；保留照片所有权说明。

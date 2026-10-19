@@ -1,0 +1,33 @@
+# Local system metadata and caches
+.DS_Store
+._*
+__MACOSX/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Keep generated objects, SDKs and private machine reports local.
+build/
+artifacts/
+toolchains/
+local/
+private/
+diagnostics/
+Payload/
+*.iso
+*.img
+*.dmg
+*.kext/
+*.o
+*.a
+*.s
+*.dylib
+*.zip
+*.log
+Input-Working-*/
+Input-Post-Recovery-*/
+Tiger-Diagnostics-*/
+PS2-Probe-*/
+PS2-Init-Result-*/
+Power-Lid-*/

@@ -1,0 +1,39 @@
+name: 问题或回归 / Problem or regression
+description: 提供可复查的故障现象与最近变化 / Describe an observed failure and recent changes
+title: "[Issue] "
+body:
+  - type: input
+    id: model-system
+    attributes:
+      label: 机型与系统 / Model and system
+    validations:
+      required: true
+  - type: dropdown
+    id: boot-state
+    attributes:
+      label: 当前启动状态 / Current boot state
+      options:
+        - 能进入桌面 / Desktop reachable
+        - 仅安装器或其他系统可用 / Installer or another OS only
+        - 尚不明确 / Unknown
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: 最近变化 / Recent changes
+      description: 最近改动了哪些文件、配置或设备；未做改动也请说明。
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 复现与现象 / Reproduction and behavior
+      description: 写出步骤、预期和实际结果；故障照片或必要日志片段请先脱敏。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 已执行的检查 / Checks performed
+      description: 附上实际结果及相关提交或机型档案链接；不要上传完整私人备份。

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 分支与 Discussions 设置 / Branches and Discussions setup
+    url: https://github.com/Allannn-sudo/OSX-for-SONY-VAIO/blob/main/docs/GITHUB.zh-CN.md
+    about: 创建机型分支、开启问答和理解成就功能 / Set up model branches, Q&A and achievements

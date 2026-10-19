@@ -1,0 +1,89 @@
+name: Create VGN-Y18C branch
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: create-vgn-y18c-branch
+  cancel-in-progress: false
+
+jobs:
+  create-model-branch:
+    if: github.repository == 'Allannn-sudo/OSX-for-SONY-VAIO' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: Allannn-sudo/OSX-for-SONY-VAIO
+    steps:
+      - name: Check out main
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Create the model branch once
+        shell: bash
+        run: |
+          set -euo pipefail
+          git ls-remote --heads origin refs/heads/vgn-y18c > "$RUNNER_TEMP/vgn-y18c-existing-ref"
+          if [[ -s "$RUNNER_TEMP/vgn-y18c-existing-ref" ]]; then
+            echo 'vgn-y18c already exists; leaving it unchanged.'
+            exit 0
+          fi
+          python3 -B scripts/prepare_model_branch.py --repository Allannn-sudo/OSX-for-SONY-VAIO --model vgn-y18c
+          export BASE_COMMIT="$(git rev-parse HEAD)"
+          export BASE_TREE="$(git rev-parse 'HEAD^{tree}')"
+          python3 -B - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          paths = ('README.md', 'README.en.md', 'evidence/repository-layout.json', 'MANIFEST.sha256')
+          tree = [{'path': path, 'mode': '100644', 'type': 'blob',
+                   'content': Path(path).read_text(encoding='utf-8')}
+                  for path in paths]
+          payload = {'base_tree': os.environ['BASE_TREE'], 'tree': tree}
+          (Path(os.environ['RUNNER_TEMP']) / 'vaio-tree.json').write_text(
+              json.dumps(payload, ensure_ascii=False), encoding='utf-8')
+          PY
+          gh api --method POST "repos/$GH_REPO/git/trees" --input "$RUNNER_TEMP/vaio-tree.json" > "$RUNNER_TEMP/vaio-tree-response.json"
+          python3 -B - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          temporary = Path(os.environ['RUNNER_TEMP'])
+          tree = json.loads((temporary / 'vaio-tree-response.json').read_text())['sha']
+          identity = {'name': 'github-actions[bot]',
+                      'email': '41898282+github-actions[bot]@users.noreply.github.com'}
+          payload = {'message': 'docs: initialize VGN-Y18C model branch',
+                     'tree': tree, 'parents': [os.environ['BASE_COMMIT']],
+                     'author': identity, 'committer': identity}
+          (temporary / 'vaio-commit.json').write_text(json.dumps(payload), encoding='utf-8')
+          PY
+          gh api --method POST "repos/$GH_REPO/git/commits" --input "$RUNNER_TEMP/vaio-commit.json" > "$RUNNER_TEMP/vaio-commit-response.json"
+          python3 -B - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          temporary = Path(os.environ['RUNNER_TEMP'])
+          commit = json.loads((temporary / 'vaio-commit-response.json').read_text())['sha']
+          payload = {'ref': 'refs/heads/vgn-y18c', 'sha': commit}
+          (temporary / 'vaio-ref.json').write_text(json.dumps(payload), encoding='utf-8')
+          PY
+          # POST creates a ref atomically. No update-ref, PATCH, push or force-push.
+          if gh api --method POST "repos/$GH_REPO/git/refs" --input "$RUNNER_TEMP/vaio-ref.json" > "$RUNNER_TEMP/vaio-ref-response.json" 2> "$RUNNER_TEMP/vaio-ref-error.txt"; then
+            echo 'Created vgn-y18c from main with the model README pair.'
+          elif gh api "repos/$GH_REPO/git/ref/heads/vgn-y18c" > /dev/null 2>&1; then
+            echo 'vgn-y18c was created concurrently; leaving it unchanged.'
+          else
+            cat "$RUNNER_TEMP/vaio-ref-error.txt" >&2
+            exit 1
+          fi
