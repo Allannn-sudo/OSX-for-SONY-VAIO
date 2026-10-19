@@ -1,0 +1,30 @@
+{
+  "note": "Historical identification only. None of these binaries is included or authorized for installation by this manifest.",
+  "installer_iso": {
+    "name": "JaS 10.4.8 AMD-Intel SSE2 SSE3.iso",
+    "bytes": 4698636288,
+    "sha256": "9947fb2330b6707aa69fc4a1267d2c72ca76f6e5eb43c7625e2678993541c65f"
+  },
+  "original_ps2_controller": {
+    "bytes": 526352,
+    "sha1": "434fc5bc5377ec28fd955c5435e047e7a18fe8a8",
+    "sha256": "1efc74c864db6c43028215c77a98d6dbcc1d0f381ce6d29f6e24609902d7fe8b"
+  },
+  "withdrawn_r2_controller": {
+    "bytes": 62264,
+    "sha1": "62d92df7f2310bbee7fd537b1be4f0af41357ece",
+    "sha256": "b03faa18a24e6edcc33fdd9748faf918d9c7dd6b431b956f11649ddff6079073",
+    "do_not_install": true
+  },
+  "r3_offline_research_object": {
+    "bytes": 62376,
+    "sha1": "276f0b77a7586020358008c7ce5b376bb15198c8",
+    "sha256": "81b03f16520151a9df1bda95fb0125ddb78373a93fa750570de25af265d72467",
+    "do_not_install": true
+  },
+  "kernel": {
+    "bytes": 4159428,
+    "sha1": "92dd04013bc9ff730857242dab4d7e959634eaf4",
+    "sha256": "00ae9aef076efd39c7c1498098ea94473f21675d271c4e084b56f6c6cc00fabe"
+  }
+}

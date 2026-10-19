@@ -1,0 +1,45 @@
+{
+  "repository": "https://github.com/apple-oss-distributions/ApplePS2Controller",
+  "tag": "ApplePS2Controller-8",
+  "commit": "dcd0a6584cdba6cdc643281d57d22864cb85ee52",
+  "archive_url": "https://codeload.github.com/apple-oss-distributions/ApplePS2Controller/zip/dcd0a6584cdba6cdc643281d57d22864cb85ee52",
+  "archive_sha256": "f7f49b2b93b05291fa45cf37e1c309712ad0eb423ea9f0cbea111b9993a3dfef",
+  "upstream_cpp_headers": [
+    {
+      "path": "ApplePS2Controller.cpp",
+      "sha256": "b685f9663a9e1710512a7d85b402fba012d04747b5fa1c53633c14c7e8c80a21",
+      "bytes": 45561
+    },
+    {
+      "path": "ApplePS2Controller.h",
+      "sha256": "8ee420eeb903bd4f7f1b22667acfe00dd664890609db4d8b9dd888dbae08a57c",
+      "bytes": 10848
+    },
+    {
+      "path": "ApplePS2Device.h",
+      "sha256": "5e0458345baf72fe4f588725c572eae2033cf5a935a7580edcd3393db361903d",
+      "bytes": 13696
+    },
+    {
+      "path": "ApplePS2KeyboardDevice.cpp",
+      "sha256": "27355431191567d30a209a4e58cb277f8c7a6a21cb27e1eb429c6e58810c6cfc",
+      "bytes": 4178
+    },
+    {
+      "path": "ApplePS2KeyboardDevice.h",
+      "sha256": "2162650e2cfce8fe4685204dca4f8234101c2388d77aa5a8bd7a7a0b8e1ce16e",
+      "bytes": 2526
+    },
+    {
+      "path": "ApplePS2MouseDevice.cpp",
+      "sha256": "23287d20fe41c3efb469b4fbdae803ac1564a596aeb7b5773b90b5d70ce1b890",
+      "bytes": 4053
+    },
+    {
+      "path": "ApplePS2MouseDevice.h",
+      "sha256": "455e13eb4566438350f21757962f8c8161abb6c8a9a8f98ace90720ea1f31169",
+      "bytes": 2487
+    }
+  ],
+  "note": "Hashes identify upstream files before project modifications. Exported source hashes are in MANIFEST.sha256."
+}

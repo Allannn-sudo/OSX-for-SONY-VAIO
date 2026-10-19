@@ -1,0 +1,55 @@
+{
+  "as_of": "2026-10-19",
+  "time_zone": "Asia/Shanghai",
+  "machine": "Sony VAIO VGN-Y18C",
+  "system": "Mac OS X 10.4.8",
+  "kernel": "semthex Darwin 8.8.1 i386",
+  "boot": "Legacy BIOS / MBR / Darwin",
+  "desktop_reached_after_original_restore": true,
+  "xp_partition_preserved": true,
+  "xp_previously_booted": true,
+  "post_recovery_xp_tiger_roundtrip": "pending",
+  "usb_keyboard_mouse": "observed working",
+  "built_in_keyboard_touchpad": "intermittent; unresolved; no valid working-state snapshot",
+  "wifi": {
+    "model": "Intel PRO/Wireless 2200BG",
+    "pci_id": "8086:4220",
+    "candidate": "Tiger iwi2200 r779",
+    "real_connection": "unverified",
+    "candidate_security": [
+      "open",
+      "Open WEP"
+    ],
+    "unsupported": [
+      "WPA",
+      "WPA2",
+      "WPA3"
+    ]
+  },
+  "sleep_and_lid_sleep": "unresolved",
+  "r2": {
+    "withdrawn": true,
+    "fault": "5 scattered relocations in pseudo-relocated __TEXT,__const; null cache records dereferenced by Tiger kld"
+  },
+  "r3": {
+    "offline_only": true,
+    "hardware_loaded": false,
+    "safe_to_install": false,
+    "known_loader_defect_removed": true,
+    "remaining": [
+      "unbounded runtime port waits",
+      "cross-stream reads",
+      "IRQ draining",
+      "real hardware validation"
+    ]
+  },
+  "validation_suites": {
+    "historical_local_binary_loader_tests": 33,
+    "portable_synthetic_loader_tests": 41,
+    "host_protocol_cases": 11
+  },
+  "revised_read_only_collector": {
+    "tiger_ioreg_options_corrected": true,
+    "real_machine_report": "pending"
+  }
+}

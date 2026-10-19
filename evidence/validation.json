@@ -1,0 +1,40 @@
+{
+  "checked_on": "2026-10-19",
+  "purpose": "source archive validation, not hardware qualification",
+  "portable_synthetic_loader_tests": {
+    "passed": 41,
+    "dependencies": "Python 3 standard library only"
+  },
+  "host_protocol_simulation": {
+    "passed": 11,
+    "real_hardware_io": false
+  },
+  "portable_builder_actual_rebuild": {
+    "offline_only": true,
+    "build_succeeded": true,
+    "loader_preflight_passed": true,
+    "marker": "VAIO-Y18C-PS2-R3-OFFLINE-20261019",
+    "object_bytes": 62376,
+    "object_sha256": "81b03f16520151a9df1bda95fb0125ddb78373a93fa750570de25af265d72467",
+    "hardware_tested": false,
+    "safe_to_install": false,
+    "source_unchanged": true,
+    "limits": [
+      "Selected static loader profile only; no hardware execution, full ABI/layout comparison or dependency validation.",
+      "Inherited unbounded runtime waits remain unresolved."
+    ]
+  },
+  "shell_syntax": "passed",
+  "modern_host_collector_guard": "refused before collection as intended",
+  "revised_collector_tiger_run": "not yet received",
+  "markdown_relative_links": "checked; no broken targets",
+  "photo": {
+    "pixel_size": [
+      3272,
+      2454
+    ],
+    "reencoded": false,
+    "capture_metadata_removed": true
+  },
+  "driver_installation_or_loading_performed": false
+}

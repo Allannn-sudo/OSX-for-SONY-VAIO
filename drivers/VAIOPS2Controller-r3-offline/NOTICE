@@ -1,0 +1,98 @@
+OFFLINE ONLY. DO NOT INSTALL OR LOAD THIS OBJECT.
+
+This source is a separate derivative of the withdrawn R2 experiment. The
+R2 source, object, payload and archive remain preserved unchanged. R3 changes
+the runtime marker and builds every C/C++ translation unit with GCC
+-fno-jump-tables. That suppresses the switch jump-table scattered relocations
+in __TEXT,__const which triggered Tiger's kernel kld_patch loader crash in R2.
+References to R2 in inherited code comments describe inherited logic.
+
+Removing that known loader fault does not establish hardware safety or that
+keyboard/touchpad initialization works. Existing controller/runtime, interrupt,
+power-management and device risks remain. This directory has no install or
+deployment tool. Static audits and a host protocol model cannot test those
+kernel/hardware behaviors.
+
+VAIO Y18C PS/2 cold-start experiment R3 — OFFLINE RESEARCH ONLY
+Runtime marker: VAIO-Y18C-PS2-R3-OFFLINE-20261019
+
+This directory is an independent source work copy. It does not install or
+load a kernel extension. A successful build or protocol simulation does not
+establish that this experiment repairs the VAIO's built-in input devices.
+
+Original source
+---------------
+ApplePS2Controller, tag ApplePS2Controller-8, Apple Computer, Inc.
+Commit dcd0a6584cdba6cdc643281d57d22864cb85ee52:
+https://github.com/apple-oss-distributions/ApplePS2Controller/tree/dcd0a6584cdba6cdc643281d57d22864cb85ee52
+
+The seven original C++/header files were copied from that pinned Apple
+source. The unmodified upstream files are available at the URL above.
+This public export contains the R3 derivative only; local source archives
+and machine diagnostics are not included. See ../../THIRD_PARTY_NOTICES.md
+and ../../licenses/APSL-1.1.txt for licensing and provenance. Original
+Apple copyright and Apple Public Source License 1.1 notices are retained in
+the files. The original source remains unmodified.
+
+Changes made on 2026-10-19
+--------------------------
+ApplePS2Controller.h retains DEBUGGER_SUPPORT=1 and every original field
+and virtual declaration. VAIO_LEGACY_DEBUGGER_PATH=0 selects the ordinary
+workloop keyboard interrupt/read path while retaining the original class
+storage layout. No new member fields or virtual functions are introduced.
+
+ApplePS2Controller.cpp initializes its existing resource pointers and flags,
+uses OSMemberFunctionCast for three member event callbacks, and invokes the
+new VAIOPS2Init.h from start() before workloop/client publication. The helper
+uses bounded port I/O, a monotonic aggregate 20-second budget, separate
+controller/device response handling, and explicit IRQ/clock/translation
+readback. Long waits run with CPU interrupts enabled and without a spinlock.
+Raw received bytes are logged only during cold initialization; request and
+read-compare failures log command expectation/index/offline metadata without
+received keyboard or mouse bytes. The controller emits the runtime marker
+and publishes initialization results as IORegistry properties.
+
+The cold-start experiment inhibits both ports, flushes bounded stale input,
+reads a stable controller command byte, disables IRQs, tests both interfaces,
+and resets the keyboard and mouse separately. Keyboard: FF -> FA -> AA,
+F5 -> FA, EE -> EE. Mouse: D4 FF -> FA -> AA -> ID, D4 F6 -> FA,
+D4 F5 -> FA. Only a received FE permits one resend. A timeout is never a
+valid zero reply. Missing/nonzero port tests or a device handshake failure
+are logged and may still permit the original plugin probes; persistently
+busy/unsafe controller transport stops publication. At handoff, both clocks
+are explicitly enabled, both IRQ-enable bits are clear, and translation is
+set. The driver does not run controller AA self-test, write the output port,
+alter A20, pulse system reset, change PCI/USB legacy registers, or use a
+vendor-specific touchpad protocol. Existing runtime and power-management
+logic otherwise remains the original Apple implementation; this work does
+not claim to repair suspend/resume.
+
+Protocol references (review inputs, not copied implementations)
+---------------------------------------------------------------
+Linux i8042 controller driver (CONTROL commands, bounded polling):
+https://github.com/torvalds/linux/blob/v6.12/drivers/input/serio/i8042.c
+https://github.com/torvalds/linux/blob/v6.12/drivers/input/serio/i8042.h
+
+Linux libps2 (ordinary/reset ACK and reset BAT timing; bounded resend):
+https://github.com/torvalds/linux/blob/v6.12/drivers/input/serio/libps2.c
+https://github.com/torvalds/linux/blob/v6.12/drivers/input/mouse/psmouse-base.c
+
+IBM Personal System/2 Model 50/60 Technical Reference, system-board I/O
+controllers / keyboard, pp. 4-9 through 4-12 (A9 is a controller response
+through port 60/IRQ1, not an auxiliary-device reply):
+https://www.ardent-tool.com/docs/pdf/ps2_50-60_techref_ch4a_system_board_io_controllers_keyboard.pdf
+
+Intel 82801DB ICH4 datasheet section 5.16.8 (USB legacy 60/64 trapping can
+interpose on an external keyboard controller; this trial does not change it):
+https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/82801db-io-controller-hub-4-datasheet.pdf
+
+The existing bundle identifiers and Info.plist version 1.1.0 must be
+retained by the separate build/packaging workflow. The runtime marker,
+not the unchanged bundle version, identifies a boot of this experiment.
+
+GitHub source export, 2026-10-19
+--------------------------------
+Added the APSL Exhibit A notice to the modified controller source/header and
+the new helper, and corrected NOTICE paths for this standalone public tree.
+These export changes are comments/notices only and do not change the driver
+logic. A complete APSL 1.1 text is provided at ../../licenses/APSL-1.1.txt.
